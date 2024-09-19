@@ -1,0 +1,26 @@
+.home-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+}
+
+
+.todo-container {
+
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 600px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
