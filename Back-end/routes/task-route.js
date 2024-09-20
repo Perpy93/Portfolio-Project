@@ -15,6 +15,9 @@ router.get("/todos", async (req, res)=>{
 
 router.post("/todos", async (req, res)=>{
     try {
+        if (!req.body.task) {
+            throw Error("Task is missing");
+        }
         const task = await Task.create({task: req.body.task});
         res.status(200).json({data: task});
     } catch (error) {
@@ -36,10 +39,10 @@ router.get("/todos/:todoId", async (req, res)=>{
 router.put("/todos/:todoId", async (req, res)=>{
     try {
         const payload = {};
-        if (req.body.task) {
+        if (req.body?.task !== undefined) {
             payload["task"] =  req.body.task;
         }
-        if (req.body.isCompleted) {
+        if (req.body?.isCompleted !== undefined) {
             payload["isCompleted"] =  req.body.isCompleted;
         }
         const task = await Task.findOneAndUpdate({_id: req.params.todoId}, payload);
